@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naturcoaching - Persönliche Entwicklung in der Natur</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: url('trough the woods.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #2d5016;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            transform: translateX(-100%);
+        }
+
+        .sidebar.show {
+            transform: translateX(0);
+        }
+
+        .sidebar-logo {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #6b8f3a;
+        }
+
+        .sidebar-logo h2 {
+            color: #1a3d0a;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            border: none;
+            padding: 0;
+        }
+
+        .sidebar-logo p {
+            color: #4a6b2a;
+            font-size: 13px;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .nav-menu li {
+            margin-bottom: 8px;
+        }
+
+        .nav-menu a {
+            display: block;
+            color: #2d5016;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: linear-gradient(135deg, #6b8f3a, #8faf5a);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Dropdown-Styles für Untermenü */
+        .nav-menu .dropdown {
+            position: relative;
+        }
+
+        .nav-menu .dropdown-content {
+            display: none;
+            background: rgba(240, 248, 240, 0.95);
+            border-radius: 8px;
+            margin: 5px 0 0 15px;
+            border-left: 2px solid #8ba05a;
+            overflow: hidden;
+        }
+
+        .nav-menu .dropdown-content.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 300px; }
+        }
+
+        .nav-menu .dropdown-content a {
+            color: #4a6b2a;
+            font-size: 13px;
+            padding: 8px 15px;
+            margin: 0;
+            border-radius: 0;
+            transform: none;
+        }
+
+        .nav-menu .dropdown-content a:hover {
+            background: rgba(107, 143, 58, 0.2);
+            transform: translateX(3px);
+        }
+
+        .nav-menu .dropdown-toggle::after {
+            content: "▼";
+            float: right;
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-menu .dropdown-toggle.open::after {
+            transform: rotate(180deg);
+        }
+
+        .mobile-toggle {
+            display: block;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #6b8f3a;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: #1a3d0a;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #1a3d0a;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #4a6b2a;
+            font-style: italic;
+        }
+        
+        .intro-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .coaching-grid {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .coaching-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #6b8f3a;
+            margin-bottom: 20px;
+        }
+        
+        .coaching-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .coaching-card h3 {  
+            color: #1a3d0a;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .coaching-card p {
+            margin-bottom: 20px;
+            color: #4a6b2a;
+        }
+        
+        .coaching-link {
+            display: block;
+            background: linear-gradient(135deg, #6b8f3a, #8faf5a);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .coaching-link:hover {
+            background: linear-gradient(135deg, #5a7e29, #7e9e49);
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .icon img {
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .info-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #1a3d0a;
+            border-bottom: 2px solid #6b8f3a;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #4a6b2a;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nature-accent {
+            color: #6b8f3a;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 80px 15px 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .info-sections {
+                grid-template-columns: 1fr;
+            }
+
+            .card-content {
+                flex-direction: column;
+            }
+
+            .icon img {
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 80px 10px 10px;
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            .intro-section, .coaching-grid, .info-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menü</button>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <h2>Naturcoaching</h2>
+            <p>Im Einklang mit der Natur</p>
+        </div>
+
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#" class="active"> Startseite</a></li>
+                <li><a href="#"> Über mich</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)"> Coaching-Angebot</a>
+                    <div class="dropdown-content" id="coaching-dropdown">
+                        <a href="selbsterkenntnis.html">• Selbsterkenntnis</a>
+                        <a href="selbstfindung.html">• Selbstfindung</a>
+                        <a href="blickwechsel.html">• Blickwechsel</a>
+                        <a href="schattenaspekte.html">• Schattenaspekte</a>
+                        <a href="koerperempfinden.html">• Körperempfinden</a>
+                        <a href="wertschaetzung.html">• Wertschätzung</a>
+                        <a href="heilung.html">• Heilung</a>
+                        <a href="kraftquellen.html">• Kraftquellen</a>
+                    </div>
+                </li>
+                <li><a href="#"> Blog</a></li>
+                <li><a href="kontaktformular.html"> Kontakt</a></li>
+                <li><a href="impressum.html"> Impressum</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="main-content" id="mainContent">
+        <div class="container">
+            <header>
+                <h1>Naturcoaching</h1>
+                <p class="subtitle">Persönliche Entwicklung in Verbindung mit der Kraft der Natur</p>
+            </header>
+
+            <section class="intro-section">
+                <h2>Was ist Naturcoaching?</h2>
+                <p>
+                    Naturcoaching verbindet persönliche Entwicklung und Beratung mit der Kraft der Natur. Das Coaching findet nicht im Büro, sondern draußen statt – zum Beispiel im Wald, im Park oder auf freien Feldern. 
+                </p>
+                <p>
+                    In der natürlichen Umgebung finden wir <span class="nature-accent">Ruhe, Klarheit und neue Perspektiven</span>, die uns dabei helfen, unsere inneren Ressourcen zu entdecken und zu stärken.
+                </p>
+            </section>
+
+            <section>
+                <div class="coaching-grid">
+                    <h2 style="text-align: center; font-size: 2em; margin-bottom: 30px;">Meine Coaching-Angebote</h2>
+                    
+                    <div class="coaching-card">
+                        <div class="card-content">
+                            <div class="icon">
+                                <img src="Old face tree.JPG" width="200px" height="200px"> 
+                            </div>
+                            <div class="text-content">
+                                <h3>Selbsterkenntnis</h3>
+                                <p>Entdecken Sie Ihre wahren Bedürfnisse, Werte und Potentiale in der beruhigenden Atmosphäre der Natur.</p>
+                            </div>
+                        </div>
+                        <a href="selbsterkenntnis.html" class="coaching-link">Mehr erfahren</a>
+                    </div>
+                    
+                    <div class="coaching-card">
+                        <div class="card-content">
+                            <div class="icon">
+                                <img src="Herz.JPG" width="200px" height="200px"> 
+                            </div>
+                            <div class="text-content">
+                                <h3>Selbstfindung</h3>
+                                <p>Finden Sie Ihren individuellen Weg und entwickeln Sie ein klareres Verständnis für Ihre Lebensziele.</p>
+                            </div>
+                        </div>
+                        <a href="selbstfindung.html" class="coaching-link">Mehr erfahren</a>
+                    </div>
+                    
+                    <div class="coaching-card">
+                        <div class="card-content">
+                            <div class="icon">
+                                <img src="Weitsicht.JPG" width="200px" height="200px"> 
+                            </div>
+                            <div class="text-content">
+                                <h3>Blickwechsel</h3>
+                                <p>Gewinnen Sie neue Perspektiven auf festgefahrene Situationen und entdecken Sie ungeahnte Lösungswege.</p>
+                            </div>
+                        </div>
+                        <a href="blickwechsel.html" class="coaching-link">Mehr erfahren</a>
+                    </div>
+                    
+                    <div class="coaching-card">
+                        <div class="card-content">
+                            <div class="icon">
+                                <img src="behind the door.JPG" width="200px" height="200px"> 
+                            </div>
+                            <div class="text-content">
+                                <h3>Schattenaspekte</h3>
+                                <p>Integrieren Sie verdrängte Persönlichkeitsanteile und wandeln Sie sie in kraftvolle Ressourcen um.</p>
+                            </div>
+                        </div>
+                        <a href="schattenaspekte.html" class="coaching-link">Mehr erfahren</a>
+                    </div>
+                    
+                    <div class="coaching-card">
+                        <div class="card-content">
+                            <div class="icon">
+                                <img src="feelings.jpg" width="200px" height="200px"> 
+                            </div>
+                            <div class="text-content">
+                                <h3>Körperempfinden</h3>
+                                <p>Stärken Sie die Verbindung zu Ihrem Körper und lernen Sie, dessen Weisheit zu verstehen und zu nutzen.</p>
+                            </div>
+                        </div>
+                        <a href="koerperempfinden.html" class="coaching-link">Mehr erfahren</a>
+                    </div>
+                    
+                    <div class="coaching-card">
+                        <div class="card-content">
+                            <div class="icon">
+                                <img src="Blatt mit Tau.JPG" width="200px" height="200px"> 
+                            </div>
+                            <div class="text-content">
+                                <h3>Wertschätzung</h3>
+                                <p>Entwickeln Sie eine liebevollere Beziehung zu sich selbst und anderen durch achtsame Naturerfahrungen.</p>
+                            </div>
+                        </div>
+                        <a href="wertschaetzung.html" class="coaching-link">Mehr erfahren</a>
+                    </div>
+                    
+                    <div class="coaching-card">
+                        <div class="card-content">
+                            <div class="icon">
+                                <img src="Heilung.jpg" width="200px" height="200px"> 
+                            </div>
+                            <div class="text-content">
+                                <h3>Heilung</h3>
+                                <p>Finden Sie inneren Frieden und emotionale Balance durch die heilsame Kraft der Naturverbindung.</p>
+                            </div>
+                        </div>
+                        <a href="heilung.html" class="coaching-link">Mehr erfahren</a>
+                    </div>
+                    
+                    <div class="coaching-card">
+                        <div class="card-content">
+                            <div class="icon">
+                                <img src="Elemente.jpg" width="200px" height="200px"> 
+                            </div>
+                            <div class="text-content">
+                                <h3>Kraftquellen</h3>
+                                <p>Entdecken Sie Ihre persönlichen Energiequellen und lernen Sie, diese bewusst zu aktivieren und zu nutzen.</p>
+                            </div>
+                        </div>
+                        <a href="kraftquellen.html" class="coaching-link">Mehr erfahren</a>
+                    </div>
+                </div>
+            </section>
+
+            <div class="info-sections">
+                <div class="info-card">
+                    <h2>Vorteile des Naturcoachings</h2>
+                    <ul>
+                        <li><span class="nature-accent">Entspannung</span> durch frische Luft und Bewegung</li>
+                        <li><span class="nature-accent">Mentale Klarheit</span> durch Tapetenwechsel</li>
+                        <li>Besserer Zugang zu <span class="nature-accent">Gefühlen und Intuition</span></li>
+                        <li><span class="nature-accent">Kreative Problemlösung</span> durch Naturerfahrungen</li>
+                        <li>Stressabbau und <span class="nature-accent">innere Ruhe</span></li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h2>Wie läuft eine Sitzung ab?</h2>
+                    <ol>
+                        <li>Kurzes Ankommen und Einstimmen am Treffpunkt</li>
+                        <li>Klärung des Ziels oder Anliegens</li>
+                        <li>Gemeinsames Gehen und Führen von Gesprächen</li>
+                        <li>Einsatz von Natur-Elementen und Übungen (z.B. Symbolarbeit mit Steinen)</li>
+                        <li>Abschluss, Integration und Ausblick</li>
+                    </ol>
+                </div>
+
+                <div class="info-card">
+                    <h2>Für wen eignet sich Naturcoaching?</h2>
+                    <p>
+                        Naturcoaching ist für <span class="nature-accent">Einzelpersonen</span> und <span class="nature-accent">Gruppen</span> geeignet. Es passt besonders gut für Menschen, die:
+                    </p>
+                    <ul>
+                        <li>Antworten auf persönliche oder berufliche Fragen suchen</li>
+                        <li>Raus aus alten Denkmustern wollen</li>
+                        <li>Gerne draußen sind und Bewegung schätzen</li>
+                        <li>Eine tiefere Verbindung zur Natur suchen</li>
+                        <li>Nachhaltigen Wandel in ihrem Leben bewirken möchten</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h2>Fazit</h2>
+                    <p>
+                        Naturcoaching hilft dabei, <span class="nature-accent">neue Perspektiven</span> zu gewinnen und eigene Ressourcen zu stärken – und das in einer Umgebung, die zur inneren <span class="nature-accent">Ruhe und Klarheit</span> beiträgt.
+                    </p>
+                    <p>
+                        Die Natur wird zu Ihrem Coaching-Partner und unterstützt Sie dabei, authentische Lösungen für Ihre Herausforderungen zu finden.
+                    </p>
+                </div>
+            </div>
+
+            <footer>
+                <p>&copy; 2025 Naturcoaching | <span class="nature-accent">Wachstum in Verbindung mit der Natur</span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown(event) {
+            event.preventDefault();
+            
+            const toggle = event.target;
+            const dropdown = document.getElementById('coaching-dropdown');
+            
+            toggle.classList.toggle('open');
+            dropdown.classList.toggle('show');
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            
+            sidebar.classList.toggle('show');
+            
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 768) {
+                    const isClickInsideSidebar = sidebar.contains(event.target);
+                    const isToggleButton = event.target.classList.contains('mobile-toggle');
+                    
+                    if (!isClickInsideSidebar && !isToggleButton && sidebar.classList.contains('show')) {
+                        sidebar.classList.remove('show');
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('resize', function() {
+            const sidebar = document.getElementById('sidebar');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (!this.getAttribute('href').startsWith('#')) {
+                    return;
+                }
+                e.preventDefault();
+                
+                document.querySelectorAll('.nav-menu a').forEach(l => l.classList.remove('active'));
+                
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naturcoaching - Persönliche Entwicklung in der Natur</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: url('trough the woods.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #2d5016;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #1a3d0a;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #4a6b2a;
+            font-style: italic;
+        }
+        
+        .intro-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .coaching-grid {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .coaching-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #6b8f3a;
+        }
+        
+        .coaching-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .coaching-card h3 {  
+            color: #1a3d0a;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .coaching-card p {
+            margin-bottom: 20px;
+            color: #4a6b2a;
+        }
+        
+        .coaching-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #6b8f3a, #8faf5a);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .coaching-link:hover {
+            background: linear-gradient(135deg, #5a7e29, #7e9e49);
+            transform: scale(1.05);
+        }
+        .card-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .coaching-link {
+            display: block;
+            text-align: center;
+        }
+        .info-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #1a3d0a;
+            border-bottom: 2px solid #6b8f3a;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #4a6b2a;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nature-accent {
+            color: #6b8f3a;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .coaching-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Naturcoaching</h1>
+            <p class="subtitle">Persönliche Entwicklung in Verbindung mit der Kraft der Natur</p>
+        </header>
+
+        <section class="intro-section">
+            <h2>Was ist Naturcoaching?</h2>
+            <p>
+                Naturcoaching verbindet persönliche Entwicklung und Beratung mit der Kraft der Natur. Das Coaching findet nicht im Büro, sondern draußen statt – zum Beispiel im Wald, im Park oder auf freien Feldern. 
+            </p>
+            <p>
+                In der natürlichen Umgebung finden wir <span class="nature-accent">Ruhe, Klarheit und neue Perspektiven</span>, die uns dabei helfen, unsere inneren Ressourcen zu entdecken und zu stärken.
+            </p>
+        </section>
+
+        <section>
+            <h2 style="text-align: center; font-size: 2em; margin-bottom: 30px;">Meine Coaching-Angebote</h2>
+            
+            <div class="coaching-grid">
+                <div class="coaching-card">
+                    <div class="card-content">
+                        <div class="icon">
+                            <img src="Old face tree.JPG" width="200px" height="200px"> 
+                        </div>
+                        <div class="text-content">
+                            <h3>Selbsterkenntnis</h3>
+                            <p>Entdecken Sie Ihre wahren Bedürfnisse, Werte und Potentiale in der beruhigenden Atmosphäre der Natur.</p>
+                        </div>
+                    </div>
+                    <a href="selbsterkenntnis.html" class="coaching-link">Mehr erfahren</a>
+                </div>
+            </div>  
+                <div class="coaching-card">
+                    <h3>🧭 Selbstfindung</h3>
+                    <p>Finden Sie Ihren individuellen Weg und entwickeln Sie ein klareres Verständnis für Ihre Lebensziele.</p>
+                    <a href="selbstfindung.html" class="coaching-link">Mehr erfahren</a>
+                </div>
+                
+                <div class="coaching-card">
+                    <h3>👁️ Blickwechsel</h3>
+                    <p>Gewinnen Sie neue Perspektiven auf festgefahrene Situationen und entdecken Sie ungeahnte Lösungswege.</p>
+                    <a href="blickwechsel.html" class="coaching-link">Mehr erfahren</a>
+                </div>
+                
+                <div class="coaching-card">
+                    <h3>🌙 Schattenaspekte</h3>
+                    <p>Integrieren Sie verdrängte Persönlichkeitsanteile und wandeln Sie sie in kraftvolle Ressourcen um.</p>
+                    <a href="schattenaspekte.html" class="coaching-link">Mehr erfahren</a>
+                </div>
+                
+                <div class="coaching-card">
+                    <h3>🤲 Körperempfinden</h3>
+                    <p>Stärken Sie die Verbindung zu Ihrem Körper und lernen Sie, dessen Weisheit zu verstehen und zu nutzen.</p>
+                    <a href="koerperempfinden.html" class="coaching-link">Mehr erfahren</a>
+                </div>
+                
+                <div class="coaching-card">
+                    <h3>💝 Wertschätzung</h3>
+                    <p>Entwickeln Sie eine liebevollere Beziehung zu sich selbst und anderen durch achtsame Naturerfahrungen.</p>
+                    <a href="wertschaetzung.html" class="coaching-link">Mehr erfahren</a>
+                </div>
+                
+                <div class="coaching-card">
+                    <h3>🌿 Heilung</h3>
+                    <p>Finden Sie inneren Frieden und emotionale Balance durch die heilsame Kraft der Naturverbindung.</p>
+                    <a href="heilung.html" class="coaching-link">Mehr erfahren</a>
+                </div>
+                
+                <div class="coaching-card">
+                    <h3>⚡ Kraftquellen</h3>
+                    <p>Entdecken Sie Ihre persönlichen Energiequellen und lernen Sie, diese bewusst zu aktivieren und zu nutzen.</p>
+                    <a href="kraftquellen.html" class="coaching-link">Mehr erfahren</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="info-sections">
+            <div class="info-card">
+                <h2>Vorteile des Naturcoachings</h2>
+                <ul>
+                    <li><span class="nature-accent">Entspannung</span> durch frische Luft und Bewegung</li>
+                    <li><span class="nature-accent">Mentale Klarheit</span> durch Tapetenwechsel</li>
+                    <li>Besserer Zugang zu <span class="nature-accent">Gefühlen und Intuition</span></li>
+                    <li><span class="nature-accent">Kreative Problemlösung</span> durch Naturerfahrungen</li>
+                    <li>Stressabbau und <span class="nature-accent">innere Ruhe</span></li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h2>Wie läuft eine Sitzung ab?</h2>
+                <ol>
+                    <li>Kurzes Ankommen und Einstimmen am Treffpunkt</li>
+                    <li>Klärung des Ziels oder Anliegens</li>
+                    <li>Gemeinsames Gehen und Führen von Gesprächen</li>
+                    <li>Einsatz von Natur-Elementen und Übungen (z.B. Symbolarbeit mit Steinen)</li>
+                    <li>Abschluss, Integration und Ausblick</li>
+                </ol>
+            </div>
+
+            <div class="info-card">
+                <h2>Für wen eignet sich Naturcoaching?</h2>
+                <p>
+                    Naturcoaching ist für <span class="nature-accent">Einzelpersonen</span> und <span class="nature-accent">Gruppen</span> geeignet. Es passt besonders gut für Menschen, die:
+                </p>
+                <ul>
+                    <li>Antworten auf persönliche oder berufliche Fragen suchen</li>
+                    <li>Raus aus alten Denkmustern wollen</li>
+                    <li>Gerne draußen sind und Bewegung schätzen</li>
+                    <li>Eine tiefere Verbindung zur Natur suchen</li>
+                    <li>Nachhaltigen Wandel in ihrem Leben bewirken möchten</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h2>Fazit</h2>
+                <p>
+                    Naturcoaching hilft dabei, <span class="nature-accent">neue Perspektiven</span> zu gewinnen und eigene Ressourcen zu stärken – und das in einer Umgebung, die zur inneren <span class="nature-accent">Ruhe und Klarheit</span> beiträgt.
+                </p>
+                <p>
+                    Die Natur wird zu Ihrem Coaching-Partner und unterstützt Sie dabei, authentische Lösungen für Ihre Herausforderungen zu finden.
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Naturcoaching | <span class="nature-accent">Wachstum in Verbindung mit der Natur</span></p>
+        </footer>
+    </div>
+</body>
+</html>

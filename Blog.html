@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Naturcoaching</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: url('trough the woods.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #2d5016;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            transform: translateX(-100%);
+        }
+
+        .sidebar.show {
+            transform: translateX(0);
+        }
+
+        .sidebar-logo {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #6b8f3a;
+        }
+
+        .sidebar-logo h2 {
+            color: #1a3d0a;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            border: none;
+            padding: 0;
+        }
+
+        .sidebar-logo p {
+            color: #4a6b2a;
+            font-size: 13px;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .nav-menu li {
+            margin-bottom: 8px;
+        }
+
+        .nav-menu a {
+            display: block;
+            color: #2d5016;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: linear-gradient(135deg, #6b8f3a, #8faf5a);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .nav-menu .dropdown {
+            position: relative;
+        }
+
+        .nav-menu .dropdown-content {
+            display: none;
+            background: rgba(240, 248, 240, 0.95);
+            border-radius: 8px;
+            margin: 5px 0 0 15px;
+            border-left: 2px solid #8ba05a;
+            overflow: hidden;
+        }
+
+        .nav-menu .dropdown-content.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 300px; }
+        }
+
+        .nav-menu .dropdown-content a {
+            color: #4a6b2a;
+            font-size: 13px;
+            padding: 8px 15px;
+            margin: 0;
+            border-radius: 0;
+            transform: none;
+        }
+
+        .nav-menu .dropdown-content a:hover {
+            background: rgba(107, 143, 58, 0.2);
+            transform: translateX(3px);
+        }
+
+        .nav-menu .dropdown-toggle::after {
+            content: "▼";
+            float: right;
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-menu .dropdown-toggle.open::after {
+            transform: rotate(180deg);
+        }
+
+        .mobile-toggle {
+            display: block;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #6b8f3a;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: #1a3d0a;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px 20px;
+        }
+        
+        .navigation {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: #6b8f3a;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #1a3d0a;
+        }
+
+        .page-header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #6b8f3a;
+        }
+
+        .page-title {
+            color: #1a3d0a;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-subtitle {
+            font-size: 1.2em;
+            color: #4a6b2a;
+            font-style: italic;
+        }
+
+        .blog-grid {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .blog-post {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #6b8f3a;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 30px;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            color: #6b8f3a;
+        }
+
+        .blog-date {
+            font-weight: bold;
+        }
+
+        .blog-category {
+            background: linear-gradient(135deg, #6b8f3a, #8faf5a);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .blog-title {
+            color: #1a3d0a;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            color: #4a6b2a;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .read-more {
+            color: #6b8f3a;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #1a3d0a;
+        }
+
+        .nature-accent {
+            color: #6b8f3a;
+            font-weight: bold;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #6b8f3a;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .back-button:hover {
+            background: #5a7e29;
+            transform: translateY(-2px);
+        }
+
+        .featured-post {
+            background: linear-gradient(135deg, rgba(107, 143, 58, 0.1), rgba(255, 255, 255, 0.95));
+            border: 2px solid rgba(107, 143, 58, 0.3);
+            position: relative;
+        }
+
+        .featured-post::before {
+            content: " Aktuell";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #6b8f3a;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 80px 15px 15px;
+            }
+            
+            .page-title {
+                font-size: 2.2em;
+            }
+
+            .blog-content {
+                padding: 20px;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 80px 10px 10px;
+            }
+
+            .page-header {
+                padding: 25px;
+            }
+
+            .page-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menü</button>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <h2>Naturcoaching</h2>
+            <p>Im Einklang mit der Natur</p>
+        </div>
+
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="Naturcoaching mit sidebar.html">🏠 Startseite</a></li>
+                <li><a href="ueber-mich.html"> Über mich</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">🌲 Leistungen</a>
+                    <div class="dropdown-content" id="coaching-dropdown">
+                        <a href="selbsterkenntnis.html">• Selbsterkenntnis</a>
+                        <a href="selbstfindung.html">• Selbstfindung</a>
+                        <a href="blickwechsel.html">• Blickwechsel</a>
+                        <a href="schattenaspekte.html">• Schattenaspekte</a>
+                        <a href="koerperempfinden.html">• Körperempfinden</a>
+                        <a href="wertschaetzung.html">• Wertschätzung</a>
+                        <a href="heilung.html">• Heilung</a>
+                        <a href="kraftquellen.html">• Kraftquellen</a>
+                    </div>
+                </li>
+                <li><a href="#" class="active"> Blog</a></li>
+                <li><a href="kontaktformular.html"> Kontakt</a></li>
+                <li><a href="impressum.html">ℹ Impressum</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="main-content" id="mainContent">
+        <div class="container">
+            <nav class="navigation">
+                <a href="Naturcoaching mit sidebar.html" class="nav-link">← Zurück zur Hauptseite</a>
+            </nav>
+
+            <div class="page-header">
+                <h1 class="page-title">Blog</h1>
+                <p class="page-subtitle">Einblicke in meine Coachings & Wanderungen</p>
+            </div>
+
+            <div class="blog-grid">
+                <!-- Featured/Aktueller Blog Post -->
+                <article class="blog-post featured-post">
+                    <img src="blog-bild-1.jpg" alt="Herbstspaziergang im Schwarzwald" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">26. September 2025</span>
+                            <span class="blog-category">Coaching-Erfahrung</span>
+                        </div>
+                        <h2 class="blog-title">Durchbruch im Herbstwald - Wenn die Natur zur Therapeutin wird</h2>
+                        <p class="blog-excerpt">
+                            Gestern hatte ich eine besonders berührende Session mit einer Klientin, die seit Monaten mit inneren Blockaden kämpfte. Der <span class="nature-accent">goldene Herbstwald</span> wurde zum perfekten Spiegel für ihren inneren Wandlungsprozess. Manchmal braucht es nur den richtigen Moment und die passende Naturkulisse...
+                        </p>
+                        <a href="blog-post-1.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </article>
+
+                <!-- Weitere Blog Posts -->
+                <article class="blog-post">
+                    <img src="blog-bild-2.jpg" alt="Sonnenaufgang über den Hügeln" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">18. September 2025</span>
+                            <span class="blog-category">Wanderung</span>
+                        </div>
+                        <h2 class="blog-title">Kraftplatz entdeckt: Sonnenaufgang am Baumwipfelpfad</h2>
+                        <p class="blog-excerpt">
+                            Bei meiner letzten Erkundungstour bin ich auf einen wundervollen Platz gestoßen, der sich perfekt für <span class="nature-accent">Morgenmeditationen</span> und Selbstreflexion eignet. Die Aussicht über das erwachende Tal hatte etwas Magisches...
+                        </p>
+                        <a href="blog-post-2.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <img src="blog-bild-3.jpg" alt="Regentropfen auf Blättern" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">10. September 2025</span>
+                            <span class="blog-category">Reflexion</span>
+                        </div>
+                        <h2 class="blog-title">Warum Regen die beste Coaching-Kulisse ist</h2>
+                        <p class="blog-excerpt">
+                            Viele Menschen denken, Naturcoaching funktioniert nur bei Sonnenschein. Doch gerade <span class="nature-accent">regnerische Tage</span> bieten eine besondere Atmosphäre für tiefe Gespräche und emotionale Durchbrüche. Heute möchte ich erklären, warum...
+                        </p>
+                        <a href="blog-post-3.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <img src="blog-bild-4.jpg" alt="Waldweg mit Lichtspiel" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">2. September 2025</span>
+                            <span class="blog-category">Methoden</span>
+                        </div>
+                        <h2 class="blog-title">Die Symbolkraft der Bäume - Arbeiten mit Naturmetaphern</h2>
+                        <p class="blog-excerpt">
+                            Jeder Baum erzählt eine Geschichte. In meinen Coaching-Sessions nutze ich oft die <span class="nature-accent">Symbolik verschiedener Baumarten</span>, um meinen Klienten neue Perspektiven zu eröffnen. Die Eiche für Standhaftigkeit, die Weide für Flexibilität...
+                        </p>
+                        <a href="blog-post-4.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <img src="blog-bild-5.jpg" alt="Gruppe beim Walking-Coaching" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">25. August 2025</span>
+                            <span class="blog-category">Gruppensession</span>
+                        </div>
+                        <h2 class="blog-title">Erste Gruppen-Session: Gemeinschaft in der Natur erleben</h2>
+                        <p class="blog-excerpt">
+                            Letzten Samstag fand meine erste <span class="nature-accent">Gruppen-Coaching Session</span> statt. Sechs wundervolle Menschen, die sich vorher nicht kannten, fanden durch gemeinsame Naturerlebnisse zu einer erstaunlichen Verbindung. Was dabei entstanden ist...
+                        </p>
+                        <a href="blog-post-5.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <img src="blog-bild-6.jpg" alt="Schmetterlinge im Sommergarten" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">15. August 2025</span>
+                            <span class="blog-category">Inspiration</span>
+                        </div>
+                        <h2 class="blog-title">Von Raupen und Schmetterlingen - Transformation in der Natur</h2>
+                        <p class="blog-excerpt">
+                            Die Metamorphose des Schmetterlings ist eine der kraftvollsten <span class="nature-accent">Transformations-Metaphern</span> in der Natur. Heute möchte ich teilen, wie ich diese wundervolle Symbolik in meiner Coaching-Arbeit einsetze und welche Erkenntnisse sie meinen Klienten bringt...
+                        </p>
+                        <a href="blog-post-6.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </article>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="Naturcoaching mit sidebar.html" class="back-button">← Zurück zur Übersicht</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown(event) {
+            event.preventDefault();
+            
+            const toggle = event.target;
+            const dropdown = document.getElementById('coaching-dropdown');
+            
+            toggle.classList.toggle('open');
+            dropdown.classList.toggle('show');
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            
+            sidebar.classList.toggle('show');
+            
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 768) {
+                    const isClickInsideSidebar = sidebar.contains(event.target);
+                    const isToggleButton = event.target.classList.contains('mobile-toggle');
+                    
+                    if (!isClickInsideSidebar && !isToggleButton && sidebar.classList.contains('show')) {
+                        sidebar.classList.remove('show');
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('resize', function() {
+            const sidebar = document.getElementById('sidebar');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (!this.getAttribute('href').startsWith('#')) {
+                    return;
+                }
+                e.preventDefault();
+                
+                document.querySelectorAll('.nav-menu a').forEach(l => l.classList.remove('active'));
+                
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

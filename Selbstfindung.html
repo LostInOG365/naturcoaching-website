@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selbstfindung - Naturcoaching</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: url('Herz.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #2d5016;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .navigation {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: #6b8f3a;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #1a3d0a;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #6b8f3a;
+        }
+        
+        header img {
+        width: 200px;   
+        height: 200px;  
+        }
+
+        h1 {
+            color: #1a3d0a;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #4a6b2a;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #1a3d0a;
+            border-bottom: 2px solid #6b8f3a;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f8e8, #e8f5e8);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #6b8f3a;
+            margin: 25px 0;
+        }
+        
+        .nature-accent {
+            color: #6b8f3a;
+            font-weight: bold;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            color: #4a6b2a;
+        }
+        
+        .coaching-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .detail-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #6b8f3a;
+        }
+        
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #6b8f3a, #8faf5a);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            margin-top: 15px;
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: #6b8f3a;
+            transform: scale(1.05);
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: #6b8f3a;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .back-button:hover {
+            background: #5a7e29;
+            transform: translateY(-2px);
+        }
+        
+        .journey-path {
+            background: linear-gradient(90deg, #f0f8e8, #e8f5e8, #f0f8e8);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .journey-path::before {
+            content: "🌟";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 1.5em;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .coaching-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navigation">
+            <a href="Naturcoaching mit sidebar.html" class="nav-link">← Zurück zur Hauptseite</a>
+        </nav>
+
+        <header>
+            <div class="icon">
+                <img src="Herz.JPG">
+            </div>
+            <h1>Selbstfindung</h1>
+            <p class="subtitle">Den eigenen Lebensweg entdecken – Wohin führt meine Reise?</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Was bedeutet Selbstfindung im Naturcoaching?</h2>
+            <p>
+                Selbstfindung ist wie eine Wanderung durch unbekanntes Terrain – Du kennst das Ziel noch nicht, aber Du spürst den inneren Ruf zum Aufbruch. In der Natur finden Sie den <span class="nature-accent">Kompass für Ihren Lebensweg</span> und entwickeln Klarheit über Ihre wahren Ziele und Träume.
+            </p>
+            <p>
+                Wie ein Fluss seinen natürlichen Verlauf findet, entdecken Sie Ihren authentischen Lebensweg. Die Natur zeigt uns, dass jeder Weg einzigartig ist und dass Umwege oft zu den schönsten Entdeckungen führen.
+            </p>
+            
+            <div class="highlight-box">
+                <strong>Zurück zu deiner wahren Natur</strong><br>
+                Lass uns gemeinsam Deinen Lebensgeschichte betrachten. Wir verschaffen dir mehr Einsicht auf die prägnantesten Dinge in deinem Leben, verändern Deine Perspektive auf Dein bisheriges Leben und ermöglichen Dir damit Verständnis für einzelene Ereignisse zu erlangen. Gemeinsam erforschen wir den Zeitpunkt, an dem Du Dich selber verloren hast und spüren einen Weg auf, wie Du wieder zu Dir zurück finden kannst.
+            </div>
+        </section>
+
+        <div class="journey-path">
+            <h2 style="margin-top: 0; color: #1a3d0a;"> Dein Weg zur Selbstfindung</h2>
+            <p>
+                <strong>Orientierung finden:</strong> Wo stehen Sie heute? Was bewegt Sie innerlich?<br>
+                <strong>Vision entwickeln:</strong> Welche Träume schlummern in Ihnen?<br>
+                <strong>Hindernisse erkennen:</strong> Was hält Sie zurück?<br>
+                <strong>Erste Schritte wagen:</strong> Wie beginnen Sie Ihre Reise?
+            </p>
+        </div>
+
+        <div class="coaching-details">
+            <div class="detail-card">
+                <h2> Coaching-Ziele</h2>
+                <ul>
+                    <li>Lebensvisionen und -träume klären</li>
+                    <li>Persönliche Werte und Prioritäten definieren</li>
+                    <li>Berufliche und private Richtung finden</li>
+                    <li>Mut für Veränderungen entwickeln</li>
+                    <li>Authentische Lebensentscheidungen treffen</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Naturmethoden</h2>
+                <ul>
+                    <li>Wegfindung als Lebensmetapher</li>
+                    <li>Kompass- und Orientierungsübungen</li>
+                    <li>Naturmandalas für Lebensbereiche</li>
+                    <li>Krafttier-Meditation und -suche</li>
+                    <li>Jahreskreis-Reflexionen</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Ablauf & Intensität</h2>
+                <ul>
+                    <li>Einzelsession: 2-3 Stunden</li>
+                    <li>Selbstfindungs-Retreat: Ganzer Tag</li>
+                    <li>Prozessbegleitung über mehrere Monate</li>
+                    <li>Flexibel an Ihrem Tempo orientiert</li>
+                    <li>Nachbetreuung und Integration</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Anwendungsbereiche</h2>
+                <ul>
+                    <li>Berufliche Neuorientierung</li>
+                    <li>Lebenskrisen als Wendepunkt</li>
+                    <li>Übergang in neue Lebensphasen</li>
+                    <li>Sinnsuche und Spiritualität</li>
+                    <li>Beziehungs- und Familienplanung</li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="content-section">
+            <h2>Warum Selbstfindung in der Natur besonders wirksam ist</h2>
+            <p>
+                Die Natur ist der perfekte Lehrmeister für Selbstfindung. Ein <span class="nature-accent">Baum wächst dorthin, wo das Licht ist</span>, ein <span class="nature-accent">Fluss findet immer seinen Weg zum Meer</span>. Diese natürlichen Gesetzmäßigkeiten inspirieren uns, unserem inneren Kompass zu vertrauen.
+            </p>
+            <p>
+                In der Stille der Natur, fernab von gesellschaftlichen Erwartungen und äußerem Druck, können Sie <span class="nature-accent">Ihre eigene Stimme hören</span>. Die Weite der Landschaft öffnet auch Ihren inneren Horizont für neue Möglichkeiten.
+            </p>
+            
+            <div class="highlight-box">
+                <strong>Meine persönliche Erfahrung:</strong><br>
+                Wir leben in einer Welt, in der es mehr darum geht, zu funktionieren als man selbst zu sein. Die Gesellschaft stellt Anforderungen an uns, die wir tunlichst zu befolgen haben. Sei es an unser Aussehen, unser Verhalten oder die Art und Weise wie wir zu leben haben. Sobald wir in einem der Bereiche nicht funktionieren, gelten wir als komisch oder abnormal wenn nicht sogar als krank. Lehnt man sich auf, wenn auch nur im Kleinen, bekommt man Sätze wie "So macht man das aber nicht." oder "So kannst du das aber nicht machen." zu hören. Oftmals wird man beim Einschlagen seiner eigenen Richtung, seines eigenen Weges als rücksichtslos, egoistisch oder mit mangelnden Sozialkompetenzen hingestellt. 
+                Auch ich habe mich jahrelang krampfhaft versucht, den Anforderungen der Gesllschaft anzupassen und mich dabei immer und immer mehr veloren und wurde letzenendes sowohl körperlich als auch psychisch emotinal krank dadurch. Denn tun wir etwas gegen unsere eigentliche Natur, führt dies im Endeffekt genau dazu. Über Jahre habe ich alle körperlichen Symptome ignoriert oder durch die Schulmedizin mit Tabletten unterdrücken lassen, um der Gesellschaft gerecht zu werden. Bei meiner Arbeit in Einzelhandel habe ich durch das stundenlange stehen solche Schmerzen in den Fußsohlen entwickelt, dass ich nicht einmal morgens direkt nach dem Aufstehen auf meine Füße stehen konnte. Jegliche orthopädische Therapie brachte keinen Erfolg also habe ich in einen Bürojob gewechselt. Doch auch dort zeigte mir mein Körper recht schnell, dass dies nicht meiner wahren Natur entsprach indem er mir solche Schmerzen beim Sitzen bereitete, dass ich nur noch mit komischen Verrenkungen im Bürostuhl hing und durch diese massive Fehlhaltung über Stunden schlussendlich mein unterer Rücken komplett dicht machte. Zudem führte mich dieser Job direkt in die Erschöpfungsdepression, welche aus meiner heutigen Perspektive meine Rettung war, da sie mich komplett resetete. Ich hatte das erste Mal in meinem Leben die Zeit, mich selbst zu hinterfragen. Wer bin ich wirklich? Wer möchte ich sein? Was ist meine wahre Seelenaufgabe? Ich erinnerte mich daran, dass ich schon als Kind am liebsten in der Natur war. Mich umgeben von Bäumen am wohlsten fühlte und sah ein, dass mir diese Art von Freiheit über die letzen Jahre komplett verloren gegangen war. Ich hörte instinktiv damit auf, mich für andere zu verbiegen indem ich mich so anzog, wie die Gesellschaft es erwartete. Ich verbrachte nicht mehr Stunden damit, mich zu schminken und meine Haare zu machen, nur weil man laut Gesellschaft nicht unhergerichtet aus der Haustür raus geht. Und auch die gesellschaftlich vorgegebenen Rituale wie das Aufstehen mit Wecker, das Essen zu bestimmten Uhrzeiten und selbst der Verzehr von gesellschaftlich genormten Mahlzeiten (zB zu jeder Hauptspeise gehört eine Beilage) legte ich komplett ab. Ich schlief, wenn mein Körper müde war. Ass wenn mein Körper das Bedürfnis nach Nahrung hatte und hörte darauf, wonach ihm der Sinn stand. All dies und noch so einiges mehr half mir, zu meiner wahren Natur zurück zu finden.
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Der Unterschied zwischen Selbsterkenntnis und Selbstfindung</h2>
+            <p>
+                Während <span class="nature-accent">Selbsterkenntnis</span> fragt "Wer bin ich?", geht <span class="nature-accent">Selbstfindung</span> einen Schritt weiter: "Wer möchte ich werden?" und "Welchen Weg will ich gehen?"
+            </p>
+            <p>
+                Selbstfindung ist dynamisch und zukunftsorientiert. Es geht darum, Deinen einzigartigen Platz in der Welt zu finden und Dein Leben bewusst zu gestalten – authentisch und selbstbestimmt.
+            </p>
+        </section>
+
+        <div class="cta-section">
+            <h2>Bist Du bereit, Deinen Weg zu finden?</h2>
+            <p>Lass uns gemeinsam den Kompass Deines Herzens entdecken und den Mut für Deine nächsten Schritte entwickeln. Die Natur zeigt uns: Jeder Weg beginnt mit dem ersten Schritt.</p>
+            <a href="Kontaktformular.html" class="cta-button">Deine Reise beginnen</a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="Naturcoaching mit sidebar.html" class="back-button">← Zurück zur Übersicht</a>
+        </div>
+    </div>
+</body>
+</html>
