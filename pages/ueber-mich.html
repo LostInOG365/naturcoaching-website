@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Über mich – Ela Bayerle, Psychologische Beraterin & Natur Coach.">
+    <title>Über mich – Naturcoaching</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menü</button>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <h2>Naturcoaching</h2>
+            <p>Im Einklang mit der Natur</p>
+        </div>
+
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Startseite</a></li>
+                <li><a href="ueber-mich.html" class="active">Über mich</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">Coaching-Angebot</a>
+                    <div class="dropdown-content" id="coaching-dropdown">
+                        <a href="selbsterkenntnis.html">• Selbsterkenntnis</a>
+                        <a href="selbstfindung.html">• Selbstfindung</a>
+                        <a href="blickwechsel.html">• Blickwechsel</a>
+                        <a href="schattenaspekte.html">• Schattenaspekte</a>
+                        <a href="koerperempfinden.html">• Körperempfinden</a>
+                        <a href="wertschaetzung.html">• Wertschätzung</a>
+                        <a href="heilung.html">• Heilung</a>
+                        <a href="kraftquellen.html">• Kraftquellen</a>
+                    </div>
+                </li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="Kontaktformular.html">Kontakt</a></li>
+                <li><a href="Impressum.html">Impressum</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="main-content" id="mainContent">
+        <div class="container">
+
+            <header>
+                <h1>Über mich</h1>
+                <p class="subtitle">Ela Bayerle – Psychologische Beraterin &amp; Natur Coach</p>
+            </header>
+
+            <article class="about-wrapper">
+            
+                <img src="../img/Hängematte.jpg" alt="Ela Bayerle in der Hängematte" class="story-img">
+
+                <p class="story-img-caption">Ela Bayerle</p>
+
+                <p>
+                    Geboren in den 1980ern in einem beschaulichen Ort im Herzen Württembergs 
+                    zog es mich schon als kleines Mädchen in die Natur. Dort erklomm ich die höchsten Bäume 
+                    &amp; legte mich trotz Heuschnupfen in die höchst gewachsenen Wiesen.
+                </p>
+
+                <p>
+                    Nicht zuletzt mein zerrüttetes Elternhaus führte dazu, dass ich mich bereits in jungen Jahren 
+                    der Psychologie, im speziellen der zwischenmenschlichen, zuwand.
+                </p>
+
+                <p>
+                    Die Bücher von Allan &amp; Barbara Pease begleiteten mich schon in jungen Jahren durch meinen Alltag.
+                </p>
+
+                <p>
+                    Und gleichzeitig ließ mich das Gefühl, nicht wirklich in diese Gesellschaft zu passen, nie wirklich los.
+                </p>
+
+                <p>Also begann ich mich weiter in psychologische Themen einzulesen.</p>
+
+                <p>Und auch Körpersprache und NLP erweckten mein Interesse.</p>
+
+                <hr class="story-divider">
+
+               <img src="../img/80er Ela.png" alt="Ela als Kind hinter einem Baum" class="story-img"> 
+
+                <p>
+                    Nach dem ich mich jedoch weiterhin anstrengte der vorherrschenden Mainstream-Gesellschaft 
+                    gerecht zu werden, verlor ich mich 2020 in einem massiven Burnout.
+                </p>
+
+                <p>
+                    Ich durchlief eine klassische Verhaltenstherapie bei einer ausgebildeten Psychologin, 
+                    merkte aber schnell, dass mich dies nur bedingt weiter brachte.
+                </p>
+
+                <p>
+                    Und so verbrachte ich immer mehr und intensiver Zeit in der Natur. Machte immer längere autarke 
+                    Wanderreisen und verbrachte sogar die Nächte in meiner Hängematte unter freiem Sternenhimmel. 
+                    Überwand durch die heilenden Kräfte der Natur mein Trauma und fand zurück zu mir selbst.
+                </p>
+
+                <p>
+                    Ganz nebenbei erfolgte meine Ausbildung zur psychologischen Beraterin – Natur Coach per Fernstudium, 
+                    da ich meine mir von der Natur gegebene Aufgabe, anderen Menschen den Weg zurück zu sich, 
+                    zu ihrer eigenen Natur, in der Natur &amp; mit Hilfe der Elemente, zu weisen und sie in ihrer 
+                    Persönlichkeitsentwicklung zu unterstützen, annahm.
+                </p>
+
+            </article>
+
+            <!-- Kontakt CTA -->
+            <section class="cta-section">
+                <h2>Neugierig geworden?</h2>
+                <p>
+                    Ich freue mich darauf, dich auf deinem Weg zu begleiten. 
+                    Schreib mir einfach – das erste Gespräch ist unverbindlich.
+                </p>
+                <a href="Kontaktformular.html" class="cta-btn">Jetzt Kontakt aufnehmen 🌿</a>
+            </section>
+
+            <footer>
+                <p>&copy; 2025 Naturcoaching | <span class="nature-accent">Wachstum in Verbindung mit der Natur</span></p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

@@ -6,6 +6,7 @@
 const sidebar = document.getElementById('sidebar');
 
 // ---- Sidebar ----
+// zurück zu
 function toggleSidebar() {
     sidebar.classList.toggle('show');
 }
