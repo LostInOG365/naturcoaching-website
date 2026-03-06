@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Körperempfinden - Naturcoaching</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background:url('feelings.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #2d5016;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .navigation {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: #6b8f3a;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #1a3d0a;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #6b8f3a;
+        }
+        
+         header img {
+            width: 200px;   
+            height: 200px;  
+        }
+
+        h1 {
+            color: #1a3d0a;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #4a6b2a;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #1a3d0a;
+            border-bottom: 2px solid #6b8f3a;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f8e8, #e8f5e8);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #6b8f3a;
+            margin: 25px 0;
+        }
+        
+        .nature-accent {
+            color: #6b8f3a;
+            font-weight: bold;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            color: #4a6b2a;
+        }
+        
+        .coaching-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .detail-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #6b8f3a;
+        }
+        
+        .senses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .sense-card {
+            background: linear-gradient(135deg, #f8fff0, #f0f8e8);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid rgba(107, 143, 58, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .sense-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #6b8f3a;
+        }
+        
+        .sense-card h3 {
+            color: #1a3d0a;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .sense-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .body-wisdom-box {
+            background: radial-gradient(circle, rgba(107, 143, 58, 0.1), rgba(255, 255, 255, 0.9));
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 2px solid rgba(107, 143, 58, 0.3);
+            text-align: center;
+        }
+        
+        .body-wisdom-box::before {
+            content: "💝";
+            display: block;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .mindfulness-exercise {
+            background: linear-gradient(135deg, rgba(240, 248, 232, 0.9), rgba(232, 245, 232, 0.9));
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #8faf5a;
+            margin: 25px 0;
+        }
+        
+        .exercise-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .exercise-steps li {
+            counter-increment: step-counter;
+            padding: 10px 0 10px 40px;
+            position: relative;
+        }
+        
+        .exercise-steps li::before {
+            content: counter(step-counter);
+            background: #6b8f3a;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 10px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #6b8f3a, #8faf5a);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            margin-top: 15px;
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: #6b8f3a;
+            transform: scale(1.05);
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: #6b8f3a;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .back-button:hover {
+            background: #5a7e29;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .coaching-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .senses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navigation">
+            <a href="Naturcoaching mit sidebar.html" class="nav-link">← Zurück zur Hauptseite</a>
+        </nav>
+            
+        <header>
+            <div class="icon">
+                <img src="feelings.jpg">
+            </div>
+            <h1>Körperempfinden</h1>
+            <p class="subtitle">Die Weisheit des Körpers entdecken – Fühlen, spüren, verstehen</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Was bedeutet Körperempfinden im Naturcoaching?</h2>
+            <p>
+                Unser Körper ist ein <span class="nature-accent">weiser Ratgeber</span>, der ständig mit uns kommuniziert – wenn wir lernen, seine Sprache zu verstehen. In der hektischen Welt haben viele Menschen den Kontakt zu ihrem Körperempfinden verloren und leben hauptsächlich "im Kopf".
+            </p>
+            <p>
+                Die Natur hilft uns dabei, wieder zu <span class="nature-accent">fühlen statt nur zu denken</span>. Der weiche Moosboden unter den Füßen, der warme Sonnenstrahl auf der Haut, der Duft von Tannennadeln – all das weckt unsere Sinne und verbindet uns mit unserem körperlichen Erleben.
+            </p>
+            
+            <div class="highlight-box">
+                <strong>Spüre in Deinen eigenen Körper hinein</strong><br>
+                Viele von uns haben verlernt den eigegen Körper zu spüren. Wir fühlen zwar, wenn etwas schmerzt aber nicht mehr unsere eigenen Gefühle. Dabei ist es so unfassbar wichtig die Signale, die uns unser Körper sendet wahrzunehmen und auch zu verstehen.Deshalb lass uns gemeinsam auf die Reise durch Deinen Körper gehen. Wir wenden uns Deinen Beschwerden & Schmerzen zu, denn auch diese haben eine tiefere Bedeutung als nur die physische, aber auch Deinen neutralen und nicht zu vergessen Deinen positiven Körperemfindungen zu, damit Du zukünftig Deinen Köper besser fühlen kannst und unter anderem Ursachen für gegebenenfalls psychosomatische Beschwerden erkennen kannst. Dies soll Dir helfen Deinen Körper aber auch Deine Seele zu entlasten & Deine Selbstheilungskräfte zu aktivieren.
+            </div>
+        </section>
+
+        <div class="body-wisdom-box">
+            <h2 style="margin-top: 0; color: #1a3d0a;">Die Sprache des Körpers verstehen</h2>
+            <p style="font-size: 1.1em;">
+                Dein Körper kennt oft die Antwort, bevor Dein Verstand sie gefunden hat. <br>
+                <span class="nature-accent">Bauchgefühl, Herzklopfen, entspannte Schultern</span> – all das sind Botschaften Deiner inneren Weisheit.
+            </p>
+        </div>
+
+        <div class="senses-grid">
+            <div class="sense-card">
+                <span class="sense-icon">👁️</span>
+                <h3>Sehen</h3>
+                <p>Bewusste Wahrnehmung von Farben, Formen und Bewegungen in der Natur</p>
+            </div>
+            
+            <div class="sense-card">
+                <span class="sense-icon">👂</span>
+                <h3>Hören</h3>
+                <p>Lauschen auf Naturgeräusche und die Stille zwischen den Tönen</p>
+            </div>
+            
+            <div class="sense-card">
+                <span class="sense-icon">👃</span>
+                <h3>Riechen</h3>
+                <p>Düfte und Aromen bewusst wahrnehmen und ihre Wirkung spüren</p>
+            </div>
+            
+            <div class="sense-card">
+                <span class="sense-icon">👅</span>
+                <h3>Schmecken</h3>
+                <p>Geschmacksrichtungen und ihre emotionalen Verbindungen erkunden</p>
+            </div>
+            
+            <div class="sense-card">
+                <span class="sense-icon">✋</span>
+                <h3>Fühlen</h3>
+                <p>Texturen, Temperatur und Bewegungen bewusst ertasten</p>
+            </div>
+            
+            <div class="sense-card">
+                <span class="sense-icon">💓</span>
+                <h3>Intuition</h3>
+                <p>Den "sechsten Sinn" und Körpersignale wahrnehmen lernen</p>
+            </div>
+        </div>
+
+        <div class="coaching-details">
+            <div class="detail-card">
+                <h2> Coaching-Ziele</h2>
+                <ul>
+                    <li>Körperwahrnehmung verfeinern</li>
+                    <li>Stress und Anspannungen lösen</li>
+                    <li>Intuition und Bauchgefühl stärken</li>
+                    <li>Emotionen körperlich verarbeiten</li>
+                    <li>Präsenz und Achtsamkeit entwickeln</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Naturmethoden</h2>
+                <ul>
+                    <li>Barfußgehen auf verschiedenen Untergründen</li>
+                    <li>Atemübungen in frischer Luft</li>
+                    <li>Sinnes-Meditationen im Freien</li>
+                    <li>Körper-Landschaft-Spiegelung</li>
+                    <li>Bewegungsflow in der Natur</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2>Coaching-Formate</h2>
+                <ul>
+                    <li>Sinnes-Session: 90 Minuten</li>
+                    <li>Körperreise: 2-3 Stunden</li>
+                    <li>Achtsamer Naturspaziergang</li>
+                    <li>Mehrere Sessions zur Vertiefung</li>
+                    <li>Entspannung im Wald</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Anwendungsbereiche</h2>
+                <ul>
+                    <li>Stress und Burnout-Prävention</li>
+                    <li>Körperliche Verspannungen</li>
+                    <li>Entscheidungsfindung verfeinern</li>
+                    <li>Emotionale Blockaden lösen</li>
+                    <li>Selbstvertrauen und Präsenz</li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="content-section">
+            <h2>Warum Körperempfinden in der Natur besonders wirksam ist</h2>
+            <p>
+                Die Natur spricht alle unsere Sinne gleichzeitig an und schafft dadurch ein <span class="nature-accent">ganzheitliches Körpererlebnis</span>. Anders als in geschlossenen Räumen können wir hier Wind, Wärme, Kälte und verschiedene Texturen direkt spüren.
+            </p>
+            <p>
+                Die <span class="nature-accent">natürliche Bewegung</span> über unebene Waldwege oder durch hohes Gras aktiviert unsere Tiefensensibilität und weckt körperliche Intelligenz, die im Alltag oft brachliegt. Diese ursprüngliche Art der Körperwahrnehmung ist in unseren Genen verankert.
+            </p>
+            
+            <div class="highlight-box">
+                <strong>Persönliche Erfahrungen:</strong><br>
+                
+            </div>
+        </section>
+
+        <div class="mindfulness-exercise">
+            <h2 style="color: #1a3d0a; margin-top: 0;">🧘‍♀️ Achtsamkeitsübung: Körper-Natur-Verbindung</h2>
+            <ol class="exercise-steps">
+                <li>Suche Dir einen ruhigen Platz in der Natur</li>
+                <li>Stehe oder sitze bequem und schließen Deine Augen</li>
+                <li>Spüre den Kontakt zwischen Deinem Körper und dem Untergrund</li>
+                <li>Nimm bewusst Deinen Atem wahr, ohne ihn zu verändern</li>
+                <li>Öffne Deine Sinne für alle Geräusche um Dich herum</li>
+                <li>Spüre Wind oder Wärme auf Deiner Haut</li>
+                <li>Bleibe 5-10 Minuten in dieser aufmerksamen Haltung</li>
+            </ol>
+        </div>
+
+        <section class="content-section">
+            <h2>Von der Körperwahrnehmung zur Lebensintuition</h2>
+            <p>
+                Wenn wir lernen, unseren Körper als <span class="nature-accent">Kompass für Lebensentscheidungen</span> zu nutzen, entwickeln wir eine ganz neue Art der Orientierung. Das Bauchgefühl wird zu einem verlässlichen Berater, körperliche Anspannung zu einem frühen Warnsignal für Stress.
+            </p>
+            <p>
+                Diese verkörperte Weisheit hilft uns nicht nur bei großen Lebensentscheidungen, sondern auch im Alltag: <span class="nature-accent">Wann brauche ich eine Pause? Welche Menschen tun mir gut? Was nährt mich wirklich?</span>
+            </p>
+        </section>
+
+        <div class="cta-section">
+            <h2>Bereit, Deinen Körper als Verbündeten zu entdecken?</h2>
+            <p>Lass uns gemeinsam die Weisheit Deines Körpers erwecken und eine tiefere Verbindung zu sich selbst aufbauen. Dein Körper wartet darauf, gehört zu werden.</p>
+            <a href="Kontaktformular.html" class="cta-button">Körperweisheit entdecken</a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="Naturcoaching mit sidebar.html" class="back-button">← Zurück zur Übersicht</a>
+        </div>
+    </div>
+</body>
+</html>

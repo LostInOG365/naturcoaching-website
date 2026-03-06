@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blickwechsel - Naturcoaching</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: url('Weitsicht.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #2d5016;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .navigation {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: #6b8f3a;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #1a3d0a;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #6b8f3a;
+        }
+        
+         header img {
+            width: 200px;   
+            height: 200px;  
+        }
+
+        h1 {
+            color: #1a3d0a;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #4a6b2a;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #1a3d0a;
+            border-bottom: 2px solid #6b8f3a;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f8e8, #e8f5e8);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #6b8f3a;
+            margin: 25px 0;
+        }
+        
+        .nature-accent {
+            color: #6b8f3a;
+            font-weight: bold;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            color: #4a6b2a;
+        }
+        
+        .coaching-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .detail-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #6b8f3a;
+        }
+        
+        .perspective-demo {
+            background: linear-gradient(45deg, #f0f8e8, #e8f5e8, #f8fff0, #e8f5e8);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .perspective-demo::before {
+            content: "🔄";
+            position: absolute;
+            top: -5px;
+            right: 15px;
+            font-size: 2em;
+            opacity: 0.3;
+            animation: rotate 8s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .problem-solution-box {
+            display: grid;
+            grid-template-columns: 1fr 50px 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 25px 0;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #6b8f3a;
+        }
+        
+        .problem-side {
+            background: #ffeaea;
+            padding: 20px;
+            border-radius: 8px;
+            color: #8b4513;
+        }
+        
+        .solution-side {
+            background: #eafaea;
+            padding: 20px;
+            border-radius: 8px;
+            color: #2d5016;
+        }
+        
+        .arrow {
+            font-size: 2em;
+            color: #6b8f3a;
+            text-align: center;
+        }
+        
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #6b8f3a, #8faf5a);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            margin-top: 15px;
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: #6b8f3a;
+            transform: scale(1.05);
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: #6b8f3a;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .back-button:hover {
+            background: #5a7e29;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .coaching-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .problem-solution-box {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navigation">
+            <a href="Naturcoaching mit sidebar.html" class="nav-link">← Zurück zur Hauptseite</a>
+        </nav>
+
+        <header>
+            <div class="icon">
+                 <img src="Weitsicht.JPG">
+            </div>
+            <h1>Blickwechsel</h1>
+            <p class="subtitle">Neue Perspektiven gewinnen – Die Welt mit anderen Augen sehen</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Was bedeutet Blickwechsel im Naturcoaching?</h2>
+            <p>
+                Manchmal stehen wir so nah vor einem Problem, dass wir den Wald vor lauter Bäumen nicht sehen. Ein <span class="nature-accent">Blickwechsel</span> ist wie das Besteigen eines Berges – plötzlich eröffnet sich eine völlig neue Sicht auf die Landschaft unseres Lebens.
+            </p>
+            <p>
+                Die Natur ist die Meisterin der Perspektiven: Derselbe Baum sieht vom Tal aus anders aus als vom Gipfel, im Frühling anders als im Herbst. Diese natürliche Vielfalt der Betrachtungsweisen nutzen wir, um <span class="nature-accent">festgefahrene Denkmuster aufzulösen</span> und neue Lösungswege zu entdecken.
+            </p>
+            
+            <div class="highlight-box">
+                <strong>Erhalte einen neuen Blickwinkel</strong><br>
+                Lass uns gemeinsam Dein Verständnis für Dein Leben verfeinern. Unter Betrachtung einzelner Situationen aus verschiedenen Blickwinkeln wie zB aus der Sicht einzelner Familienmitglieder, Freunden aber auch Außenstehender fördern wir Dein Verständnis für die Scihtweise Anderer auf Dein Leben damit du erkennen kannst was Dir selbst an den Verhaltensweisen Deiner Mitmenschen missfällt und mit welchen Methoden du mit solch belastenden Situationen anders umgehen kannst.
+            </div>
+        </section>
+
+        <div class="perspective-demo">
+            <h2 style="margin-top: 0; color: #1a3d0a;">Der Zauber des Perspektivwechsels</h2>
+            <p style="font-size: 1.1em; font-style: italic;">
+                "Es sind nicht die Dinge selbst, die uns beunruhigen, sondern die Meinungen, die wir von den Dingen haben."
+                <br><small>– Epiktet</small>
+            </p>
+        </div>
+
+        <div class="problem-solution-box">
+            <div class="problem-side">
+                <h3> Alte Sichtweise</h3>
+                <ul>
+                    <li>Probleme erscheinen unlösbar</li>
+                    <li>Tunnel-Blick auf Schwierigkeiten</li>
+                    <li>Wiederholung alter Muster</li>
+                    <li>Gefühl der Ausweglosigkeit</li>
+                </ul>
+            </div>
+            
+            <div class="arrow">➡️</div>
+            
+            <div class="solution-side">
+                <h3> Neue Perspektive</h3>
+                <ul>
+                    <li>Vielfalt an Lösungsmöglichkeiten</li>
+                    <li>Weitblick und Überblick</li>
+                    <li>Kreative Ansätze entstehen</li>
+                    <li>Hoffnung und Zuversicht</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="coaching-details">
+            <div class="detail-card">
+                <h2> Coaching-Ziele</h2>
+                <ul>
+                    <li>Festgefahrene Denkmuster durchbrechen</li>
+                    <li>Alternative Sichtweisen entwickeln</li>
+                    <li>Kreative Lösungsansätze finden</li>
+                    <li>Urteilsfähigkeit verbessern</li>
+                    <li>Mentale Flexibilität stärken</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Naturmethoden</h2>
+                <ul>
+                    <li>Perspektivwechsel durch Standortwechsel</li>
+                    <li>Beobachtung aus verschiedenen Blickwinkeln</li>
+                    <li>Metaphernarbeit mit Naturlandschaften</li>
+                    <li>Jahreszeiten-Perspektiven nutzen</li>
+                    <li>Tier- und Pflanzen-Sichtweisen einnehmen</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Coaching-Formate</h2>
+                <ul>
+                    <li>Kurz-Session: 90 Minuten</li>
+                    <li>Intensive: Halber Tag</li>
+                    <li>Perspektiv-Walk: 2-3 Stunden</li>
+                    <li>Mehrere Sessions für komplexe Themen</li>
+                    <li>Online-Nachbetreuung möglich</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Anwendungsgebiete</h2>
+                <ul>
+                    <li>Berufliche Konflikte und Herausforderungen</li>
+                    <li>Beziehungsprobleme verstehen</li>
+                    <li>Entscheidungsfindung verbessern</li>
+                    <li>Kreativitätsblockaden lösen</li>
+                    <li>Stress und Überforderung reduzieren</li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="content-section">
+            <h2>Warum Blickwechsel in der Natur so kraftvoll ist</h2>
+            <p>
+                Die Natur zeigt uns täglich, wie vielfältig Perspektiven sein können. Ein <span class="nature-accent">Morgen-Tau</span> lässt dieselbe Wiese völlig anders aussehen als bei Sonnenschein. Ein <span class="nature-accent">Wetterwechsel</span> verwandelt die gesamte Stimmung einer Landschaft.
+            </p>
+            <p>
+                Diese natürlichen Veränderungen öffnen auch unseren Geist für neue Sichtweisen. Wenn wir <span class="nature-accent">verschiedene Standorte</span> in der Natur aufsuchen – vom Tal zum Berg, vom Wald zur Lichtung – verändert sich automatisch auch unser innerer Blickwinkel.
+            </p>
+            
+            <div class="highlight-box">
+                <strong>Meine persönliche Erfahrung:</strong><br>
+                Oftmals geraten wir in Situationen, mit denen wir nicht klar kommen. Seien es Aussagen von Familie, Freunden, Arbeitskollegen oder sogar Fremden, die wir auf Grund von festgefahrenen Denkmustern direkt persönlich nehmen oder Probleme, die uns unlösbar erscheinen, da wir nur einen Weg, eine Weise diese zu betrachten kennen. Auch mir ging es jahrelang so. Bis ich gelernt habe, sozusagen einen Schritt zurück zu machen und mit Abstand auf Situationen zu blicken. Ich begann immer öfter darüber nachzudenken, wie nun ein anderer in dieser Situation reagieren würde. Ich lernte bei vermeintlich verletzenden Aussagen nicht direkt emotional zu reagieren sondern die Aussage an sich in Frage zu stellen. Was wollte mir die Person mit dieser Aussage mitteilen? Auf was hindeuten? Und wie konnte ich abseits einer emotionalen Reaktion darauf reagieren. Wenn man erst einmal verstanden hat, wie sinnlos es ist, jemandem der einen anschreit mit der selben Emotionalität zu begegnen, verändert dass nicht nur die eigene Sichtweise sondern meist auch die des Gegenübers. Ich begann also beinahe jegliche Situation zu hinterfragen und dadurch eröffneten sich mir vielfältige Wege auf eben diese Situationen zu reagieren. Ich begann immer mehr die Vorteile in den bedrückensten Situationen zu entdecken und erlangte dadurch nicht nur mehr Weitblick sondern auch innere Ruhe und Gelassenheit sowie die Zuversicht, dass es für jedes Problem eine Lösung gibt. Mittlerweile sehe ich solche Situationen nicht mehr als Probleme sondern als Herausforderungen um meiner Kreativität Spielraum zu geben.
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Die Kraft der Metaphern in der Natur</h2>
+            <p>
+                Die Natur spricht in <span class="nature-accent">Bildern und Symbolen</span>, die unser Unbewusstes direkt ansprechen. Ein verknoteter Ast kann für eine komplizierte Situation stehen – aber aus einer anderen Perspektive betrachtet, wird sichtbar, wie natürlich und organisch auch diese Verschlingung entstanden ist.
+            </p>
+            <p>
+                Durch diese metaphorische Arbeit lösen sich mentale Blockaden oft wie von selbst auf. Was im Kopf unlösbar erschien, findet in der Natur plötzlich neue Wege und Möglichkeiten.
+            </p>
+        </section>
+
+        <div class="cta-section">
+            <h2>Bereit für einen neuen Blickwinkel?</h2>
+            <p>Lasse uns gemeinsam den Berg besteigen und die Aussicht genießen. Von dort oben sehen die Probleme oft viel kleiner aus – und die Lösungen umso größer.</p>
+            <a href="Kontaktformular.html" class="cta-button">Perspektive wechseln</a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="Naturcoaching mit sidebar.html" class="back-button">← Zurück zur Übersicht</a>
+        </div>
+    </div>
+</body>
+</html>

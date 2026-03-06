@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heilung - Naturcoaching</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: url('Heilung.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #2d5016;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .navigation {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: #6b8f3a;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #1a3d0a;
+        }
+        
+       header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #6b8f3a;
+        }
+        
+         header img {
+            width: 200px;   
+            height: 200px;  
+        }
+        
+        h1 {
+            color: #1a3d0a;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #4a6b2a;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #1a3d0a;
+            border-bottom: 2px solid #6b8f3a;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f8e8, #e8f5e8);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #6b8f3a;
+            margin: 25px 0;
+        }
+        
+        .nature-accent {
+            color: #6b8f3a;
+            font-weight: bold;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            color: #4a6b2a;
+        }
+        
+        .coaching-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .detail-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #6b8f3a;
+        }
+        
+        .healing-sanctuary {
+            background: radial-gradient(circle, rgba(135, 206, 235, 0.1), rgba(255, 255, 255, 0.95));
+            padding: 40px;
+            border-radius: 20px;
+            margin: 25px 0;
+            border: 3px solid rgba(135, 206, 235, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .healing-sanctuary::before {
+            content: "✨";
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 2em;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        
+        .healing-sanctuary::after {
+            content: "🕊️";
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2em;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .healing-phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .phase-card {
+            background: linear-gradient(135deg, rgba(176, 224, 230, 0.2), rgba(240, 248, 232, 0.9));
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid rgba(176, 224, 230, 0.4);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(135, 206, 235, 0.3);
+            border-color: #87CEEB;
+        }
+        
+        .phase-card h3 {
+            color: #1a3d0a;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .phase-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .healing-river {
+            background: linear-gradient(90deg, rgba(176, 224, 230, 0.3), rgba(240, 248, 232, 0.9), rgba(176, 224, 230, 0.3));
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .healing-river::before {
+            content: "🌊";
+            position: absolute;
+            top: 15px;
+            left: -20px;
+            font-size: 1.5em;
+            animation: flow 6s linear infinite;
+        }
+        
+        @keyframes flow {
+            0% { left: -20px; }
+            100% { left: 100%; }
+        }
+        
+        .nature-medicine {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .medicine-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #8faf5a;
+            transition: transform 0.3s ease;
+        }
+        
+        .medicine-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .healing-journey-quote {
+            background: linear-gradient(135deg, rgba(221, 160, 221, 0.1), rgba(255, 255, 255, 0.9));
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #DDA0DD;
+            font-style: italic;
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .healing-journey-quote::after {
+            content: "🦋";
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8em;
+            opacity: 0.7;
+            animation: butterfly 8s ease-in-out infinite;
+        }
+        
+        @keyframes butterfly {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.1); }
+            75% { transform: rotate(-5deg) scale(0.9); }
+        }
+        
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #6b8f3a, #8faf5a);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            margin-top: 15px;
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: #6b8f3a;
+            transform: scale(1.05);
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: #6b8f3a;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .back-button:hover {
+            background: #5a7e29;
+            transform: translateY(-2px);
+        }
+        
+        .gentle-reminder {
+            background: rgba(255, 250, 240, 0.9);
+            border: 2px solid #F4A460;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .gentle-reminder h3 {
+            color: #B8860B;
+            margin-top: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .coaching-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .healing-phases {
+                grid-template-columns: 1fr;
+            }
+            
+            .nature-medicine {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navigation">
+            <a href="Naturcoaching mit sidebar.html" class="nav-link">← Zurück zur Hauptseite</a>
+        </nav>
+
+        <header>
+            <div class="icon">
+                <img src="Heilung.jpg">
+            </div>
+            <h1>Heilung</h1>
+            <p class="subtitle">Inneren Frieden finden – Alte Wunden heilen lassen</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Was bedeutet Heilung im Naturcoaching?</h2>
+            <p>
+                Heilung ist ein natürlicher Prozess – wie ein Baum, der nach einem Sturm seine Wunden überwallt und dabei noch stärker wird. In der Natur finden wir den geschützten Raum und die heilsame Energie, die wir brauchen, um <span class="nature-accent">alte Verletzungen zu integrieren</span> und zu innerem Frieden zu finden.
+            </p>
+            <p>
+                Die Natur zeigt uns, dass Heilung Zeit braucht und in Zyklen geschieht. Wie die <span class="nature-accent">Jahreszeiten aufeinander folgen</span>, gibt es auch in unserem Heilungsprozess Phasen der Ruhe, des Wachstums und der Erneuerung. Heilung bedeutet nicht, dass wir vergessen – sondern dass wir <span class="nature-accent">Frieden mit unserer Geschichte</span> schließen.
+            </p>
+            
+            <div class="highlight-box">
+                <strong>Seelische Verletzungen überwinden</strong><br>
+                Oftmals werden wir von einem Menschen oder einer Situation so verletzt, dass eine tiefe seelische Narbe entsteht, welche wiederum dafür sorgt, dass wir uns verschließen und dadurch nicht mehr offen für neue Dinge sind.
+                Leider verpassen wir hierdurch oftmals viele schöne Ereignisse, da wir zu sehr Angst haben, offen für etwas Neues zu sein. Wir fürchten die erneute Verletzung und verstecken uns regelrecht hinter unserem Trauma.
+                Lass uns dies gemeinsam angehen und überwinden, um frei und offen für Neues sein zu können.
+            </div>
+        </section>
+
+        <div class="healing-sanctuary">
+            <h2 style="margin-top: 0; color: #1a3d0a;"> Heilungsraum Natur</h2>
+            <p style="font-size: 1.2em; line-height: 1.7;">
+                Die Natur ist ein natürlicher Heilungsraum, der <span class="nature-accent">bedingungslos annimmt</span> und trägt. 
+                Hier dürfen alle Gefühle sein – Trauer, Wut, Schmerz und Freude. 
+                Die Erde kann alles aufnehmen und verwandeln.
+            </p>
+        </div>
+
+        <div class="healing-phases">
+            <div class="phase-card">
+                <span class="phase-icon"></span>
+                <h3>Anerkennung</h3>
+                <p>Den Schmerz würdigen und die eigene Verletzlichkeit annehmen</p>
+            </div>
+            
+            <div class="phase-card">
+                <span class="phase-icon"></span>
+                <h3>Durchfühlung</h3>
+                <p>Gefühle fließen lassen und in der Natur ausdrücken</p>
+            </div>
+            
+            <div class="phase-card">
+                <span class="phase-icon"></span>
+                <h3>Transformation</h3>
+                <p>Aus dem Erlebten Weisheit und neue Stärke gewinnen</p>
+            </div>
+            
+            <div class="phase-card">
+                <span class="phase-icon"></span>
+                <h3>Integration</h3>
+                <p>Das Gelernte ins Leben integrieren und neu erblühen</p>
+            </div>
+        </div>
+
+        <div class="coaching-details">
+            <div class="detail-card">
+                <h2> Coaching-Ziele</h2>
+                <ul>
+                    <li>Alte emotionale Wunden heilen</li>
+                    <li>Trauma behutsam verarbeiten</li>
+                    <li>Inneren Frieden und Ruhe finden</li>
+                    <li>Vergebung (sich selbst und anderen)</li>
+                    <li>Neue Lebensergie und Hoffnung entwickeln</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Naturmethoden</h2>
+                <ul>
+                    <li>Rituelle Steinlegung für Abschiede</li>
+                    <li>Heilsame Wassererfahrungen</li>
+                    <li>Erdung und Verwurzelungsübungen</li>
+                    <li>Symbolische Bestattung alter Schmerzen</li>
+                    <li>Lichtmeditation bei Sonnenaufgang</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Coaching-Intensität</h2>
+                <ul>
+                    <li>Einzelsession: 2-3 Stunden</li>
+                    <li>Heilungsintensiv: Ganzer Tag</li>
+                    <li>Mehrwöchige Prozessbegleitung</li>
+                    <li>Trauma-sensible Herangehensweise</li>
+                    <li>Integration und Nachbetreuung</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h2> Heilungsbereiche</h2>
+                <ul>
+                    <li>Verlust und Trauer</li>
+                    <li>Beziehungstrauma</li>
+                    <li>Kindheitswunden</li>
+                    <li>Berufliche Enttäuschungen</li>
+                    <li>Lebenskrisen und Übergänge</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="healing-river">
+            <h2 style="color: #1a3d0a; margin-top: 0;"> Der Fluss der Heilung</h2>
+            <p>
+                Heilung ist wie ein Fluss – sie fließt in ihrem eigenen Rhythmus und findet ihren Weg. 
+                Manchmal sind es <span class="nature-accent">ruhige Gewässer</span>, manchmal wilde Stromschnellen. 
+                Beide gehören zum natürlichen Lauf des Lebens und der Heilung.
+            </p>
+        </div>
+
+        <section class="content-section">
+            <h2>Warum Heilung in der Natur besonders kraftvoll ist</h2>
+            <p>
+                Die Natur ist die größte <span class="nature-accent">Lehrmeisterin für Regeneration</span>. Ein Wald nach einem Brand, eine Blume, die durch Asphalt wächst, ein Baum, der nach dem Sturm neue Triebe bildet – überall zeigt uns die Natur, dass Heilung möglich ist.
+            </p>
+            <p>
+                In der <span class="nature-accent">Stille des Waldes</span> oder am rauschenden Bach finden wir den Raum, den unsere Seele für Heilung braucht. Die Natur urteilt nicht über unseren Schmerz – sie nimmt ihn einfach auf und hilft uns dabei, ihn zu verwandeln.
+            </p>
+            
+            <div class="highlight-box">
+                <strong>Persönliche Heilungs-Erfahrung:</strong><br>
+                Ich persönlich habe beim Fernwandern gelernt zu heilen. Auf den vielen vielen Kilometern, die ich mittlerweile erwandert habe, habe ich viele Verletzungen der Natur gesehen aber eben auch, wie die Natur mit diesen umgegangen ist.
+                Sei es ein Baum, an dem ein Schild befestigt wurde also eine oberflächliche Wunde zugefügt wurde, welcher dann einfach über das Schild drüber gewachsen ist, über einen durch einen Sturm umgefegten Baum, der dann aus seiner Schieflage heraus wieder gen Himmel gewachsen ist bis hin zu abgebrochenen Ästen, an deren Stelle am Baum eine sichtbare Vernarbung enstanden ist, der Baum ans sich aber überlebte und weiter wächst und gedeiht.
+                Das sind nur ein paar Beispiele, die mich gelehrt haben, dass man über jede Verletzung hinauswachsen, nach jedem Sturm, der einen zu Boden fallen hat lassen, wieder aufstehen und nach jeder Trennung wieder heilen und trotzdem weiter wachsen und gedeihen kann.
+            </div>
+        </section>
+
+        <div class="nature-medicine">
+            <div class="medicine-card">
+                <h3> Baummedizin</h3>
+                <p>Stabilität, Erdung und das Gefühl, gehalten zu sein</p>
+            </div>
+            
+            <div class="medicine-card">
+                <h3> Wassermedizin</h3>
+                <p>Reinigung, Fließen lassen und emotionale Klarheit</p>
+            </div>
+            
+            <div class="medicine-card">
+                <h3> Blütenmedizin</h3>
+                <p>Sanftheit, Schönheit und die Kraft der Erneuerung</p>
+            </div>
+            
+            <div class="medicine-card">
+                <h3> Mondmedizin</h3>
+                <p>Zyklen verstehen, Loslassen und Neuanfang</p>
+            </div>
+        </div>
+
+        <div class="healing-journey-quote">
+            <p style="font-size: 1.2em; margin-bottom: 15px; color: #2d5016;">
+                "Die Wunde ist der Ort, wo das Licht in dich eindringt."
+            </p>
+            <small style="color: #4a6b2a;">– Rumi</small>
+            <br><br>
+            <p style="font-size: 1em; color: #4a6b2a;">
+                Jede Wunde trägt das Potential zur Transformation in sich. 
+                In der Natur lernen wir, diese Verwandlung zu vertrauen.
+            </p>
+        </div>
+
+        <div class="gentle-reminder">
+            <h3> Sanfte Erinnerung zur Heilungsarbeit</h3>
+            <p>
+                Heilungsarbeit kann intensive Emotionen auslösen. Ich begleite Dich mit der nötigen Sensibilität und Erfahrung durch diesen Prozess. 
+            </p>
+        </div>
+
+        <section class="content-section">
+            <h2>Von der Wunde zur Weisheit</h2>
+            <p>
+                Wahre Heilung bedeutet nicht, dass wir so werden, als wäre nichts geschehen. Sie bedeutet, dass wir <span class="nature-accent">Frieden mit unserer Geschichte</span> schließen und aus unseren Erfahrungen Weisheit und Mitgefühl entwickeln.
+            </p>
+            <p>
+                Wie ein Baum, der um eine Wunde herum wächst und dabei besonders schöne Formen entwickelt, können auch wir unsere Verletzungen als Teil unserer einzigartigen Schönheit integrieren. Die Natur zeigt uns: <span class="nature-accent">Heilung ist immer möglich</span>.
+            </p>
+        </section>
+
+        <div class="cta-section">
+            <h2>Bereit für Deinen Heilungsweg?</h2>
+            <p>Lass uns gemeinsam den geschützten Raum schaffen, den Deine Seele für Heilung braucht. Die Natur wartet darauf, Dich auf diesem wichtigen Weg zu begleiten und zu tragen.</p>
+            <a href="Kontaktformular.html" class="cta-button">Heilung beginnen</a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="Naturcoaching mit sidebar.html" class="back-button">← Zurück zur Übersicht</a>
+        </div>
+    </div>
+</body>
+</html>

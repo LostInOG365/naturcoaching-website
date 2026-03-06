@@ -1,0 +1,364 @@
+/* ============================================================
+   Naturcoaching – styles.css
+   ============================================================ */
+
+/* ---------- CSS Custom Properties (Farben zentral definiert) ---------- */
+:root {
+    --color-primary:    #1a3d0a;
+    --color-accent:     #6b8f3a;
+    --color-accent-light: #8faf5a;
+    --color-text:       #4a6b2a;
+    --color-bg-card:    rgba(255, 255, 255, 0.9);
+    --color-bg-card-solid: rgba(255, 255, 255, 0.95);
+    --shadow-default:   0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-hover:     0 8px 25px rgba(0, 0, 0, 0.15);
+    --border-radius:    15px;
+}
+
+/* ---------- Reset & Base ---------- */
+body {
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: url('../img/trough the woods.jpg') center / cover no-repeat;
+    color: var(--color-primary);
+    display: flex;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    width: 280px;
+    background: var(--color-bg-card-solid);
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .sidebar {
+        backdrop-filter: blur(10px);
+    }
+}
+
+.sidebar.show {
+    transform: translateX(0);
+}
+
+.sidebar-logo {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--color-accent);
+}
+
+.sidebar-logo h2 {
+    color: var(--color-primary);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    border: none;
+    padding: 0;
+}
+
+.sidebar-logo p {
+    color: var(--color-text);
+    font-size: 13px;
+    font-style: italic;
+    margin: 0;
+}
+
+/* ---------- Navigation ---------- */
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.nav-menu li {
+    margin-bottom: 8px;
+}
+
+.nav-menu a {
+    display: block;
+    color: var(--color-primary);
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+    color: white;
+    transform: translateX(5px);
+}
+
+/* Dropdown */
+.nav-menu .dropdown-content {
+    display: none;
+    background: rgba(240, 248, 240, 0.95);
+    border-radius: 8px;
+    margin: 5px 0 0 15px;
+    border-left: 2px solid #8ba05a;
+    overflow: hidden;
+}
+
+.nav-menu .dropdown-content.show {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; max-height: 0; }
+    to   { opacity: 1; max-height: 300px; }
+}
+
+.nav-menu .dropdown-content a {
+    color: var(--color-text);
+    font-size: 13px;
+    padding: 8px 15px;
+    margin: 0;
+    border-radius: 0;
+    transform: none;
+}
+
+.nav-menu .dropdown-content a:hover {
+    background: rgba(107, 143, 58, 0.2);
+    transform: translateX(3px);
+}
+
+.nav-menu .dropdown-toggle::after {
+    content: "▼";
+    float: right;
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+.nav-menu .dropdown-toggle.open::after {
+    transform: rotate(180deg);
+}
+
+/* ---------- Mobile Toggle Button ---------- */
+.mobile-toggle {
+    display: block;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background: var(--color-bg-card-solid);
+    border: 2px solid var(--color-accent);
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: var(--shadow-default);
+    color: var(--color-primary);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ---------- Main Content ---------- */
+.main-content {
+    flex: 1;
+    transition: margin-left 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 20px;
+}
+
+/* ---------- Header ---------- */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    background: var(--color-bg-card);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-default);
+}
+
+h1 {
+    color: var(--color-primary);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: var(--color-text);
+    font-style: italic;
+}
+
+/* ---------- Sections ---------- */
+.intro-section,
+.coaching-grid {
+    background: var(--color-bg-card);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    margin-bottom: 40px;
+    box-shadow: var(--shadow-default);
+}
+
+.section-heading {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    /* überschreibt den border-bottom von h2 */
+    border-bottom: none;
+}
+
+/* ---------- Coaching Cards ---------- */
+.coaching-card {
+    background: var(--color-bg-card-solid);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid var(--color-accent);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.coaching-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.coaching-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.coaching-card p {
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.card-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.icon img {
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.coaching-link {
+    display: block;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.coaching-link:hover {
+    background: linear-gradient(135deg, #5a7e29, #7e9e49);
+    transform: scale(1.05);
+}
+
+/* ---------- Info Section ---------- */
+.info-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.info-card {
+    background: var(--color-bg-card);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-default);
+}
+
+ul, ol {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+/* ---------- Hilfklassen ---------- */
+.nature-accent {
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 30px;
+    background: var(--color-bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-default);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .container {
+        padding: 80px 15px 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .info-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .card-content {
+        flex-direction: column;
+    }
+
+    .icon img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 80px 10px 10px;
+    }
+
+    header,
+    .intro-section,
+    .coaching-grid,
+    .info-card {
+        padding: 20px;
+    }
+}
