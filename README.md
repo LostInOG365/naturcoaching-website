@@ -1,6 +1,6 @@
 ﻿# Nature Coaching Website
 
-A website for psychological counseling with a focus on natureÔÇöcreated as a personal web development project.
+A website for psychological counseling with a focus on nature - created as a personal web development project.
 
 ## About the project
 
@@ -22,7 +22,7 @@ This website provides information about nature coaching services and contact det
 
 ## Current status
 
-­ƒÜº **Work in progress**
+­**Work in progress**
 
 The website is functional but not yet ready for production. Currently in progress:
 - Layout optimizations and fine-tuning
@@ -38,10 +38,5 @@ This project also serves to expand my web development skills, in particular:
 - Responsive design
 - Transition from one-page to multi-page websites
 
-## Background
-
-While retraining as an IT specialist for application development, I am creating this website in parallel to apply and deepen my front-end knowledge in a practical way.
-
----
 
 *Note: The website is currently not publicly accessible and is being developed locally.*
